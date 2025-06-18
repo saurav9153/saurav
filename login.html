@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color:  rgb(20, 20, 243);
+
+}
+
+h1{
+    margin-top: 10px;
+}
+
+.main-body h2{
+    margin-top: -20px;
+}
+.loginp{
+    width: 400px;
+    height: 500px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    margin-left: 36%;
+    margin-top: 6%;
+    padding:7px;
+    border-radius: 7px;
+
+
+}
+ 
+.bodyp, .loginp{position: relative;
+top: 7%;}
+.username1, .psd1{
+    border: none;
+    background-color: black;
+    border-bottom: 3px solid white;
+    width: 300px;
+    font-size: 20px;
+    margin-top: 50px;
+    color:white;
+    outline: none;
+}
+p{
+    margin-top: 30px;
+    font-size: 20px;
+}
+p span,a{
+    color: rgb(20, 20, 243);
+    text-decoration: none;
+
+}
+.logbtn{
+    width:250px;
+    height: 44px;
+    background-color: rgb(20, 20, 243);
+    border: none;
+    font-size: 20px;
+    border-radius: 25px;
+    margin-top: 20px;
+
+
+}
+.logbtn:hover{
+    border: 3px solid rgb(20, 20, 243);
+    color: white;
+    background-color: rgb(10, 10, 10);
+    font-size: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="bodyp">
+        <div class="loginp">
+            <h1>Login</h1>
+            <input type="text" class="username1" placeholder="Enter Username">
+            <input type="password" class="psd1" placeholder="Enter Password">
+            <p> Forgot Password?</p>
+            <button class="logbtn">Login</button>
+            <p>Not a user <span><a href="">Sign Up</a>
+            </span></p>
+
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   background-color: rgb(148, 124, 124) ;
+}
+
+.typing-section{
+    text-align: center;
+}
+#textarea{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding:7px;
+    font-size: 17px;
+}
+#sub-btn{
+    display: inline block;
+    padding: 10px;
+    background-color: #645cbb;
+    border:none;
+    color:white;
+    height:44px;
+    width: 150px;
+    border-radius:25px;
+    margin-top:10px;
+
+
+}
+
+h2{
+color: aliceblue;
+    text-align: center;
+}
+ #sentences, #score{
+    letter-spacing: 2px;
+    text-align: center;
+ }
+ #sentences{
+    height:100px;
+    width :790px;
+    background-color: blueviolet;
+    color: white;
+    font-size: 20px;
+ }
+
+
+
