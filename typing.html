@@ -1,39 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TYPING</title>
-    <link
-      rel="stylesheet"
-      href="typing.css"
-    />
-  </head>
-  <body>
-    <main>
-      <header>
-        <nav></nav>
-      </header>
-      <section class="main-body">
-        <h2>TYPING TEST CHECK YOUR SPEED</h2>
-        <p id="sentences">
-          Lorem ipsum dolor sit amet consectetur adipisicing elite. <br> Commodi
-          eligendi dicta, incidunt soluta,  <br>voluptates atque voluptatem maiores
-          exercitationem, adipisci enim recusandae! Vero magni sequi enim qui
-          in. Rem, atque repudiandae?
-        </p>
-        <div class="typing-section">
-          <textarea
-            name="textarea"
-            id="textarea"
-            cols="80"
-            rows="15"
-          ></textarea>
-          <br />
-          <button id="sub-btn">Start</button>
-        </div>
-      </section>
-    </main>
-    <script src="C:\Users\SAURAV VISHWAKARMA\Desktop\Web1\java\index.js"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<title>Typing Speed Test</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #98a5b3;
+        text-align: center;
+        padding: 20px;
+    }
+    h1 {
+        color: #333;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+    #textDisplay {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 18px;
+        line-height: 1.5;
+        border: 1px solid #0c0101;
+    }
+    textarea {
+        width: 100%;
+        height: 120px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    .stats {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-around;
+        font-size: 18px;
+    }
+    button {
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        border-radius: 6px;
+        background: #091600;
+        color: white;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #03680c;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>  Welcome to SAURAV ACADEMY</h1>
+    <h2> Typing Test...Let's Type</h2>
+
+    <div>
+        <button onclick="startTest(120)">2 Min</button>
+        <button onclick="startTest(300)">5 Min</button>
+        <button onclick="startTest(600)">10 Min</button>
+    </div>
+
+    <div id="textDisplay"></div>
+
+    <textarea id="inputArea" placeholder="Start typing here..." disabled></textarea>
+
+    <div class="stats">
+        <div>Time: <span id="time">0</span>s</div>
+        <div>WPM: <span id="wpm">0</span></div>
+        <div>Accuracy: <span id="accuracy">100</span>%</div>
+    </div>
+</div>
+
+<script>
+const sampleText = "The human have been developed so much but their mindset has not been evolved they are still stucked in superstitions and myths and we know it but we follow how human development is going when we still don't want to change ourself. we don't want to learn new things some time people of environment are afraid that they can get knowledge then they will not follow our standards. When we see about standards we actually want to create but don't want to follow. We are killing nature for our benefit. Every thing is available for need in this planet but Nothing is Sufficient for greed.";
+
+let timer = 0;
+let timeLeft = 0;
+let interval = null;
+let started = false;
+
+const textDisplay = document.getElementById("textDisplay");
+const inputArea = document.getElementById("inputArea");
+const timeEl = document.getElementById("time");
+const wpmEl = document.getElementById("wpm");
+const accEl = document.getElementById("accuracy");
+
+function startTest(duration) {
+    clearInterval(interval);
+    timeLeft = duration;
+    timer = duration;
+    started = false;
+
+    inputArea.value = "";
+    inputArea.disabled = false;
+    inputArea.focus();
+
+    textDisplay.innerText = sampleText;
+
+    interval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer() {
+    if (timeLeft <= 0) {
+        clearInterval(interval);
+        inputArea.disabled = true;
+        return;
+    }
+    timeLeft--;
+    timeEl.innerText = timeLeft;
+    calculateStats();
+}
+
+inputArea.addEventListener("input", () => {
+    if (!started) {
+        started = true;
+    }
+    calculateStats();
+});
+
+function calculateStats() {
+    const typed = inputArea.value;
+    const original = sampleText;
+
+    let correct = 0;
+
+    for (let i = 0; i < typed.length; i++) {
+        if (typed[i] === original[i]) {
+            correct++;
+        }
+    }
+
+    // Accuracy
+    let accuracy = typed.length === 0 ? 100 : (correct / typed.length) * 100;
+    accEl.innerText = accuracy.toFixed(2);
+
+    // WPM calculation
+    let minutes = (timer - timeLeft) / 60;
+    let words = typed.length / 5;
+    let wpm = minutes > 0 ? words / minutes : 0;
+
+    wpmEl.innerText = Math.round(wpm);
+}
+</script>
+
+</body>
 </html>
